@@ -24,6 +24,23 @@ class App extends Component{
     });
   } //hàm nhận giá trị trả về khi click ColorPiker
 
+  onChangeSize = (params) =>{
+    if(this.state.fontSize + params >= 0 && this.state.fontSize + params <= 50){
+      this.setState({
+        fontSize: this.state.fontSize + params
+      });
+    }
+  }
+
+  onSettingDefault = (params)=>{
+    if(params){
+      this.setState({
+        color: 'red',
+        fontSize: 14
+      });
+    }
+  }
+
   render(){
     return (
       <div className="App">
@@ -32,11 +49,11 @@ class App extends Component{
           <Row>
             <Col md="4">
               <ColorPiker activecolor={this.state.color} onReceiveColor={this.onSetColor}/>
-              <FontSizeSetting/>
+              <FontSizeSetting fontSize={this.state.fontSize} onChangeSize={this.onChangeSize}/>
             </Col>
             <Col md="8">
-              <Result colortext={this.state.color}/>
-              <Reset/>
+              <Result colortext={this.state.color} fontSize={this.state.fontSize}/>
+              <Reset onSettingDefault={this.onSettingDefault}/>
             </Col>
           </Row>
         </Container>

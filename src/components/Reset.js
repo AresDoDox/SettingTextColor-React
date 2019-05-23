@@ -3,9 +3,14 @@ import {Button} from 'reactstrap';
 
 
 class Result extends Component {
+
+    onResetDefault = () => {
+        this.props.onSettingDefault('abc');
+    }
+
     render() {
         return (
-            <Button color="primary">Reset</Button>
+            <Button color="primary" onClick={this.onResetDefault}>Reset</Button>
         );
     }
 }

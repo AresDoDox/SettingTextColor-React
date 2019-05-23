@@ -8,7 +8,8 @@ class Result extends Component {
 
     styleText(){
         return {
-            color: this.props.colortext
+            color: this.props.colortext,
+            fontSize: this.props.fontSize
         }
     }
     render() {
@@ -16,7 +17,7 @@ class Result extends Component {
             <Card className=".col-4">
                 <CardHeader>My text</CardHeader>
                 <CardBody>
-                    <CardText style={this.styleText()}>My Text</CardText>
+                    <CardText style={this.styleText()}>This is the project "Setting Text Color Application" with ReactJS</CardText>
                 </CardBody>
             </Card>
         );

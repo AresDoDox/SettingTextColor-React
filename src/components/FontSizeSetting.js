@@ -5,14 +5,19 @@ import {
 
 
 class FontSizeSetting extends Component {
+
+    changeSize(value){
+        this.props.onChangeSize(value);
+    }
+
     render() {
         return (
                 <Card className=".col-4">
                     <CardHeader>Font Size Setting</CardHeader>
                     <CardBody>
-                        <CardText>Font-size: 14px</CardText>
-                        <Button color="success">-</Button>{' '}
-                        <Button color="success">+</Button>
+                        <CardText>Font-size: {this.props.fontSize}px</CardText>
+                        <Button color="success" onClick={()=> this.changeSize(-1)}>-</Button>{' '}
+                        <Button color="success" onClick={()=> this.changeSize(+1)}>+</Button>
                     </CardBody>
                 </Card>
         );
