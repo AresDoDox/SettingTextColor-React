@@ -1,26 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
+import React,{Component} from 'react';
 import './App.css';
+import {
+  Container, Col, Row
+} from 'reactstrap';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import ColorPiker from './components/ColorPiker';
+import FontSizeSetting from './components/FontSizeSetting';
+import Result from './components/Result';
+import Reset from './components/Reset';
+
+class App extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      color: 'red',
+      fontSize: 14
+    }
+  }
+
+  onSetColor = (params) => {
+    this.setState({
+      color: params
+    });
+  } //hàm nhận giá trị trả về khi click ColorPiker
+
+  render(){
+    return (
+      <div className="App">
+        <h1>Setting Text Color App</h1>
+        <Container>
+          <Row>
+            <Col md="4">
+              <ColorPiker activecolor={this.state.color} onReceiveColor={this.onSetColor}/>
+              <FontSizeSetting/>
+            </Col>
+            <Col md="8">
+              <Result colortext={this.state.color}/>
+              <Reset/>
+            </Col>
+          </Row>
+        </Container>
+        
+      </div>
+    );
+  }
 }
 
 export default App;
